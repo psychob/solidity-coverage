@@ -133,12 +133,12 @@ function configureNetworkEnv(env, networkName, networkConfig, provider, isHardha
   env.config.networks[networkName] = networkConfig;
   env.config.defaultNetwork = networkName;
 
-  env.network = {
+  env.network = Object.assign({
     name: networkName,
     config: networkConfig,
     provider: provider,
-    isHardhatEVM: isHardhatEVM
-  }
+    isHardhatEVM: isHardhatEVM,
+  }, env.network);
 
   env.ethereum = provider;
 
